@@ -48,6 +48,9 @@ public class OutlineRenderPassFeature : ScriptableRendererFeature
     {        
         outlineRenderPass = new OutlineRenderPass{material=material};
         outlineRenderPass.renderPassEvent = renderPassEvent;
+        if (Camera.main == null)
+            return;
+        
         var outlineCamera = Camera.main.GetComponent<OutlineCamera>();
         if (outlineCamera != null)
             outlineRenderPass.objectTexture = outlineCamera.outlineMap;
